@@ -1,0 +1,54 @@
+name:                cpex-domain-data
+version:             0.1.0.0
+license:             BSD3
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+dependencies:
+- base >= 4.7 && < 5
+- managed
+- mtl
+- text
+
+library:
+  source-dirs: src
+  default-extensions:
+    - LambdaCase
+    - RecordWildCards
+    - TypeFamilies
+
+executables:
+  cpex-domain-data-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - text
+    - cpex-domain-data
+    default-extensions:
+    - RecordWildCards
+
+tests:
+  cpex-domain-data-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - cpex-domain-data
+    - hspec
+    default-extensions:
+    - LambdaCase
+    - RecordWildCards
+    - TypeFamilies

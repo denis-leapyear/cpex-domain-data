@@ -1,0 +1,73 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: cbc3a3d1adeef3fde6fc9b9d54662ad790f99e5d05dc8d048e2f7dcf7ca3d63b
+
+name:           cpex-domain-data
+version:        0.1.0.0
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+library
+  exposed-modules:
+      Services.FileCopyService
+      Services.FileCopyServiceImpl
+      Services.FileReaderService
+      Services.FileReaderServiceImpl
+      Services.FileWriterService
+      Services.FileWriterServiceImpl
+      Services.GetEnvArgsService
+      Services.GetEnvArgsServiceImpl
+  other-modules:
+      Paths_cpex_domain_data
+  hs-source-dirs:
+      src
+  default-extensions: LambdaCase RecordWildCards TypeFamilies
+  build-depends:
+      base >=4.7 && <5
+    , managed
+    , mtl
+    , text
+  default-language: Haskell2010
+
+executable cpex-domain-data-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_cpex_domain_data
+  hs-source-dirs:
+      app
+  default-extensions: RecordWildCards
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , cpex-domain-data
+    , managed
+    , mtl
+    , text
+  default-language: Haskell2010
+
+test-suite cpex-domain-data-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      TestServices.GetEnvArgsServiceTestImpl
+      Paths_cpex_domain_data
+  hs-source-dirs:
+      test
+  default-extensions: LambdaCase RecordWildCards TypeFamilies
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , cpex-domain-data
+    , hspec
+    , managed
+    , mtl
+    , text
+  default-language: Haskell2010
