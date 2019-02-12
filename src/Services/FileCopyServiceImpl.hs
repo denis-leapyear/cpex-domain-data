@@ -1,8 +1,6 @@
 module Services.FileCopyServiceImpl where
 
 import Control.Monad (when)
-import Control.Monad.IO.Class (MonadIO, liftIO)
-import qualified System.IO as IO
 
 import Services.GetEnvArgsService
 import Services.FileReaderService
@@ -14,7 +12,7 @@ import Services.FileCopyService
 
 
 createFileCopyService
-  :: (Monad m, MonadIO m, handle ~ IO.Handle)
+  :: Monad m
   => GetEnvArgsService m
   -> FileReaderService m readhandle
   -> FileWriterService m writehandle
@@ -33,7 +31,7 @@ createFileCopyService GetEnvArgsService{..} FileReaderService{..} FileWriterServ
     }
 
 createFileCopyServiceAggregated
-  :: (Monad m, MonadIO m, handle ~ IO.Handle)
+  :: Monad m
   => FileSystemAndEnvServices m readhandle writehandle
   -> m (FileCopyService m)
 createFileCopyServiceAggregated FileSystemAndEnvServices{..} = pure
