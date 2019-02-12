@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: cbc3a3d1adeef3fde6fc9b9d54662ad790f99e5d05dc8d048e2f7dcf7ca3d63b
+-- hash: 9ee9badf9433bf2ec0a3a7f803d799592a6d1ea9de4d6711494f817ae0ec91cb
 
 name:           cpex-domain-data
 version:        0.1.0.0
@@ -21,6 +21,7 @@ library
       Services.FileCopyServiceImpl
       Services.FileReaderService
       Services.FileReaderServiceImpl
+      Services.FileSystemAndEnvServices
       Services.FileWriterService
       Services.FileWriterServiceImpl
       Services.GetEnvArgsService
