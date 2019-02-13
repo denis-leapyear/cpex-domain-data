@@ -13,6 +13,12 @@ import Services.FileCopyServiceImpl
 
 import Services.FileSystemAndEnvServices
 
+import MonadConfigurationProviderInstance
+
+import Services
+import Services.FileReaderServiceInstanceM
+import Services.FileReaderServiceMImpl
+
 import TestServices.GetEnvArgsServiceTestImpl
 
 main :: IO ()
@@ -22,6 +28,8 @@ spec :: Spec
 spec = describe "cp" $ do
   fileReaderSvc <- runIO createFileReaderService
   fileWriterSvc <- runIO createFileWriterService
+  fileReaderServiceMData <- runIO createFileReaderServiceMData
+
   let inputFileName = "test.txt"
       outputFileName = "out.txt"
   getEnvArgsSvc <- runIO $ createGetEnvArgsTestService [inputFileName, outputFileName]
@@ -42,4 +50,14 @@ spec = describe "cp" $ do
     copyFileSpecifiedInArgs
 
     content <- readFile outputFileName
+    content `shouldBe` "abcd"
+
+  it "should copy a file (Configurable Monad)" $ do
+    let services = Services{..}
+
+    FileCopyService{..} <- createFileCopyServiceM getEnvArgsSvc fileWriterSvc
+
+    copyFileSpecifiedInArgs
+
+    content <- openFileForRead fileReaderSvc outputFileName >>= readFileContent fileReaderSvc
     content `shouldBe` "abcd"

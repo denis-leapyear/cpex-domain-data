@@ -19,9 +19,16 @@ dependencies:
 library:
   source-dirs: src
   default-extensions:
+    - AllowAmbiguousTypes
+    - FlexibleInstances
     - LambdaCase
+    - MultiParamTypeClasses
+    - RankNTypes
     - RecordWildCards
+    - TypeApplications
     - TypeFamilies
+    - ScopedTypeVariables
+    - UndecidableInstances
 
 executables:
   cpex-domain-data-exe:
@@ -35,7 +42,14 @@ executables:
     - text
     - cpex-domain-data
     default-extensions:
+    - AllowAmbiguousTypes
+    - FlexibleInstances
+    - MultiParamTypeClasses
     - RecordWildCards
+    - RankNTypes
+    - TypeApplications
+    - ScopedTypeVariables
+    - UndecidableInstances
 
 tests:
   cpex-domain-data-test:
@@ -49,6 +63,13 @@ tests:
     - cpex-domain-data
     - hspec
     default-extensions:
+    - AllowAmbiguousTypes
+    - FlexibleInstances
     - LambdaCase
+    - MultiParamTypeClasses
+    - RankNTypes
     - RecordWildCards
+    - TypeApplications
     - TypeFamilies
+    - ScopedTypeVariables
+    - UndecidableInstances

@@ -7,6 +7,8 @@ import Services.FileReaderServiceImpl
 import Services.FileWriterServiceImpl
 import Services.FileCopyServiceImpl
 
+import MonadConfigurationProviderInstance
+
 main :: IO ()
 main = do
   fileReaderSvc       <- createFileReaderService
